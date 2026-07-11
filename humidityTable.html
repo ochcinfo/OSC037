@@ -65,7 +65,7 @@
             });
             const hash_=location.hash.replace("#","")
             if (hash_.startsWith("id_")){
-              const target=document.querySelector("#"+_hash.slice(3))
+              const target=document.querySelector("#"+hash_.slice(3))
               if (target){
                 target.scrollIntoView({
                   behavior: 'smooth',
