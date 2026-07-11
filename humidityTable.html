@@ -65,7 +65,7 @@
         });
         onHashChangeFunction()
       })
-      document.addEventListener("hashChange",e=>onhashChangeFunction())
+      document.addEventListener("hashchange",e=>onhashChangeFunction())
       function onhashChangeFunction(){
         const hash_=location.hash.replace("#","")
         if (hash_.startsWith("id_")){
