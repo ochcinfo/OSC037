@@ -77,7 +77,9 @@
             })
           }
         }else if (hash_){
-          nowFocusYellowObject.style.backgroundColor=""
+          if (nowFocusYellowObject){
+            nowFocusYellowObject.style.backgroundColor=""
+          }
           const hash="_"+hash_.replace(/-/g,"_")
           const target=document.querySelector("#"+hash)
           if (target){
