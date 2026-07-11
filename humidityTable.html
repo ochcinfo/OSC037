@@ -67,7 +67,7 @@
     <div id="table_root_div">
       <table>
         <tr>
-          <th class="table_fixed_x">示度/差</th>
+          <th class="table_fixed_x table_fixed_y">示度/差</th>
           <th class="table_fixed_y">0.0</th>
           <th class="table_fixed_y">0.5</th>
           <th class="table_fixed_y">1.0</th>
@@ -1078,5 +1078,30 @@
         <!--</tbody>-->
       </table>
     </div>
+    <script>
+        window.addEventListener('scroll', () => {
+          // 1. ページ全体がどれくらい下にスクロールされたか（px単位）を取得
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          // 2. 表の親要素（#table_root_div）の位置を取得
+          const tableRoot = document.getElementById('table_root_div');
+          if (!tableRoot) return;
+          // 表の一番上のY座標
+          const tableTop = tableRoot.getBoundingClientRect().top + scrollTop;
+          // 表の一番下のY座標（全体の高さ分を足す）
+          const tableBottom = tableTop + tableRoot.offsetHeight;
+          // 3. 固定したい一番上のマス（.table_fixed_y）をすべて取得
+          const fixedHeaders = document.querySelectorAll('.table_fixed_y');
+          // 4. スクロール位置に合わせて、一番上のマスだけを強制的に画面上端にキープする
+          fixedHeaders.forEach(th => {
+            // 画面が表の中にいる間だけ、スクロールした分（scrollTop - tableTop）だけ下に押し下げる
+            if (scrollTop > tableTop && scrollTop < (tableBottom - th.offsetHeight)) {
+              th.style.transform = `translateY(${scrollTop - tableTop}px)`;
+            } else {
+              // 表より上にいる時、または表を完全に通り過ぎたら元の位置に戻す
+              th.style.transform = 'translateY(0px)';
+            }
+          });
+        });
+    </script>
   </body>
 </html>
