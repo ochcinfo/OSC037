@@ -77,7 +77,7 @@
             })
           }
         }else if (hash_){
-          if (nowFocusYellowObject){
+          if (globalThis._nowFocusYellowObject){
             nowFocusYellowObject.style.backgroundColor=""
           }
           const hash="_"+hash_.replace(/-/g,"_")
@@ -88,7 +88,7 @@
               block: 'center'
             })
             target.style.backgroundColor='#fff9c4'
-            nowFocusYellowObject=target
+            globalThis._nowFocusYellowObject=target
           }
         }
       }
