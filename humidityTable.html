@@ -47,6 +47,9 @@
         max-height:max-content;
         height:1848px;
       }
+      tr[id] {
+        scroll-margin-top: 42px; 
+      }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
@@ -60,6 +63,26 @@
                 ],
                 throwOnError: false
             });
+            const hash_=location.hash.replace("#","")
+            if (hash_.startsWith("id_")){
+              const target=document.querySelector("#"+_hash.slice(3))
+              if (target){
+                target.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'center'
+                })
+              }
+            }else if (hash_){
+              const hash="_"+hash_.replace(/-/g,"_")
+              const target=document.querySelector("#"+hash)
+              if (target){
+                target.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'center'
+                })
+                target.style.backgroundColor='#fff9c4'
+              }
+            }
         });
     </script>
   </head>
