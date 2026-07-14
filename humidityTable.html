@@ -22,6 +22,8 @@
         column-gap:16px;
         box-shadow:0 4px 8px rgba(0,0,0,0.2);
         z-index:255;
+        min-width:100vw;
+        width:100%;
       }
       .slcbtn{
         background-color:#888;
@@ -118,7 +120,7 @@
               nvf.src="about:blank"
               nvf.style.display="none"
               _offline.style.display="block"
-            })
+            },5000)
             nvf.src="./humidityTable/naturalVentilation.html"+val
           }
         }
@@ -147,7 +149,7 @@
         nv.disabled=true
         ap.disabled=true
         _changeiframe(0)
-      })
+      },5000)
       ap.addEventListener("click",()=>{
         document.body.style.cursor="wait"
         nv.style.cursor="wait"
