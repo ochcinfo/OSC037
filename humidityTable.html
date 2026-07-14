@@ -54,7 +54,7 @@
       }
       iframe{
         width:100%;
-        height:100%
+        height:100%;
         border:none;
       }
       a{
@@ -189,8 +189,10 @@
         const mode=(prm.get("mode")??"").toLowerCase()
         if (mode=="1"||mode=="aspirated"||mode=="aspirate"||mode=="asp"){
           ap.click()
+          changeHash(1,location.hash)
         }else{
           nv.click()
+          changeHash(0,location.hash)
         }
       }
       userOnclick()
