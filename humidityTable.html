@@ -192,7 +192,7 @@
           },1000)
           return
         }
-        if (nv.ariaDisabled){return}
+        if (nv.ariaDisabled==="true"){return}
         document.body.style.cursor="wait"
         nv.style.cursor="wait"
         ap.style.cursor="wait"
@@ -207,7 +207,7 @@
             ap.classList.remove("shake")
           },1000)
         }
-        if (ap.ariaDisabled){return}
+        if (ap.ariaDisabled==="true"){return}
         document.body.style.cursor="wait"
         nv.style.cursor="wait"
         ap.style.cursor="wait"
