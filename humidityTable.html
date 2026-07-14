@@ -14,7 +14,6 @@
         overflow:auto;
       }
       header{
-        position:fixed;
         background-color:#666;
         padding:8px;
         display:flex;
@@ -93,6 +92,9 @@
         if(id===1){//通風乾湿計用湿度表
           if(apf.src){
             apf.contentWindow.location.hash=val
+            document.body.style.cursor="default"
+            nv.style.cursor="default"
+            ap.style.cursor="default"
           }else{
             timeoutId=setTimeout(()=>{
               document.body.style.cursor="default"
@@ -109,6 +111,9 @@
         }else{//自然通風乾湿計用湿度表
           if(nvf.src){
             nvf.contentWindow.location.hash=val
+            document.body.style.cursor="default"
+            nv.style.cursor="default"
+            ap.style.cursor="default"
           }else{
             timeoutId=setTimeout(()=>{
               document.body.style.cursor="default"
