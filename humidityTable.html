@@ -176,7 +176,7 @@
         changeHash(viewer,location.hash)
       })
       function userOnclick(){
-        const mode=prm.get("mode").toLowerCase()
+        const mode=(prm.get("mode")??"").toLowerCase()
         if (mode=="1"||mode=="aspirated"||mode=="aspirate"||mode=="asp"){
           ap.click()
         }else{
