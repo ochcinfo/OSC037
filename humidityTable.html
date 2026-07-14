@@ -116,6 +116,7 @@
       const prm=new URLSearchParams(location.search)
       let viewer;
       let timeoutId=null
+      let disabled={nv:false,ap:false}
 
       function load_(url,elm){
         elm.src=url
@@ -126,16 +127,18 @@
             apf.contentWindow.location.hash=val
             document.body.style.cursor="default"
             nv.style.cursor="default"
-            ap.style.cursor="default"
+            ap.style.cursor="default"/*
             nv.disabled=false
-            ap.disabled=true
+            ap.disabled=true*/
           }else{
             timeoutId=setTimeout(()=>{
               document.body.style.cursor="default"
               nv.style.cursor="default"
-              ap.style.cursor="default"
+              ap.style.cursor="default"/*
               nv.disabled=false
-              ap.disabled=false
+              ap.disabled=false*/
+              disabled.nv=false
+              disabled.ap=false
               apf.src="about:blank"
               apf.style.display="none"
               _offline.style.display="block"
@@ -147,16 +150,20 @@
             nvf.contentWindow.location.hash=val
             document.body.style.cursor="default"
             nv.style.cursor="default"
-            ap.style.cursor="default"    
+            ap.style.cursor="default"/*    
             nv.disabled=true
-            ap.disabled=false
+            ap.disabled=false*/
+            disabled.nv=true
+            disabled.ap=true
           }else{
             timeoutId=setTimeout(()=>{
               document.body.style.cursor="default"
               nv.style.cursor="default"
-              ap.style.cursor="default"
+              ap.style.cursor="default"/*
               nv.disabled=false
-              ap.disabled=false
+              ap.disabled=false*/
+              disabled.nv=false
+              disabled.ap=false
               nvf.src="about:blank"
               nvf.style.display="none"
               _offline.style.display="block"
@@ -185,6 +192,7 @@
         viewer=id
       }
       nv.addEventListener("click",()=>{
+        if (disabled.nv){return}
         if (nv.classList.contains("active")){
           nv.classList.add("shake")
           setTimeout(()=>{
@@ -194,12 +202,15 @@
         }
         document.body.style.cursor="wait"
         nv.style.cursor="wait"
-        ap.style.cursor="wait"
+        ap.style.cursor="wait"/*
         nv.disabled=true
-        ap.disabled=true
+        ap.disabled=true*/
+        disabled.nv=true
+        disabled.ap=true
         _changeiframe(0)
       })
       ap.addEventListener("click",()=>{
+        if (disabled.ap){return}
         if (ap.classList.contains("active")){
           ap.classList.add("shake")
           setTimeout(()=>{
@@ -208,27 +219,33 @@
         }
         document.body.style.cursor="wait"
         nv.style.cursor="wait"
-        ap.style.cursor="wait"
+        ap.style.cursor="wait"/*
         nv.disabled=true
-        ap.disabled=true
+        ap.disabled=true*/
+        disabled.nv=true
+        disabled.ap=true
         _changeiframe(1)
       })
       nvf.addEventListener("load",()=>{
         clearTimeout(timeoutId)
         document.body.style.cursor="default"
         nv.style.cursor="default"
-        ap.style.cursor="default"
+        ap.style.cursor="default"/*
         nv.disabled=true
-        ap.disabled=false
+        ap.disabled=false*/
+        disabled.nv=true
+        disabled.ap=false
         changeHash(0,location.hash)
       })
       apf.addEventListener("load",()=>{
         clearTimeout(timeoutId)
         document.body.style.cursor="default"
         nv.style.cursor="default"
-        ap.style.cursor="default"
+        ap.style.cursor="default"/*
         nv.disabled=false
-        ap.disabled=true
+        ap.disabled=true*/
+        disabled.nv=false
+        disabled.ap=true
         changeHash(1,location.hash)
       })
       window.addEventListener("hashchange",()=>{
