@@ -53,14 +53,14 @@
         cursor:pointer !important;
       }
       .slcbtn:disabled:active{
-        animation: shake-animation 1.0s ease-in-out;
+        animation: shake-animation 0.6s ease-in-out;
       }
       .slcbtn.active{
         background-color:#62c48e;
         color:#12343e;
         box-shadow:inset 0 4px 8px rgba(0,0,0,0.3)
       }
-      .slcbtn:active{
+      .slcbtn:not(:disabled):active{
         transform:scale(0.96)
       }
       #iframeViewer{
