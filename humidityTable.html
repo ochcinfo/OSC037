@@ -95,6 +95,8 @@
             document.body.style.cursor="default"
             nv.style.cursor="default"
             ap.style.cursor="default"
+            nv.disabled=false
+            ap.disabled=true
           }else{
             timeoutId=setTimeout(()=>{
               document.body.style.cursor="default"
@@ -113,7 +115,9 @@
             nvf.contentWindow.location.hash=val
             document.body.style.cursor="default"
             nv.style.cursor="default"
-            ap.style.cursor="default"
+            ap.style.cursor="default"    
+            nv.disabled=true
+            ap.disabled=false
           }else{
             timeoutId=setTimeout(()=>{
               document.body.style.cursor="default"
@@ -153,7 +157,7 @@
         nv.disabled=true
         ap.disabled=true
         _changeiframe(0)
-      },5000)
+      })
       ap.addEventListener("click",()=>{
         document.body.style.cursor="wait"
         nv.style.cursor="wait"
