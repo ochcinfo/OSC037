@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang=ja>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body{
+        margin:0;
+        padding:0;
+        display:flex;
+        flex-direction: column;
+        min-height:100vh;
+        height:100vh;
+        overflow:auto;
+      }
+      header{
+        position:fixed;
+        background-color:#666;
+        padding:8px;
+        display:flex;
+        justify-content:center;
+        column-gap:16px;
+        box-shadow:0 4px 8px rgba(0,0,0,0.2);
+        z-index:255;
+      }
+      .slcbtn{
+        background-color:#888;
+        color:#d7faf1;
+        border:none;
+        padding:8px 16px;
+        font-size:16px;
+        border-radius:4px;
+        cursor:pointer;
+        transition:background-color:0.5s,transform:0.1s;
+      }
+      .slcbtn:disabled{
+        cursor:not-allowed;
+      }
+      .slcbtn:hover{
+        background-color:#999;
+      }
+      .slcbtn.active{
+        background-color:#77edac;
+        box-shadow:inset 0 4px 8px rgba(0,0,0,0.3)
+      }
+      .slcbtn:active{
+        transform:scale(0.96)
+      }
+      #iframeViewer{
+        flex:1;
+        width:100%;
+        height:100%;
+        border:none;
+      }
+      iframe{
+        width:100%;
+        height:100%
+        border:none;
+      }
+      a{
+        color:#2196f3;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <button class="slcbtn" id="nv">自然通風乾湿計用湿度表</button>
+      <button class="slcbtn" id="ap">通風乾湿計用湿度表</button>
+    </header>
+    <div id="iframeViewer">
+      <iframe id="nvFrame" style="display:none"></iframe>
+      <iframe id="apFrame" style="display:none"></iframe>
+      <p id="loading">読み込み中...(自動で読み込まれない場合は<a href="javascript:userOnclick()">こちら</a>をおしてください。)</p>
+      <p id="offline" style="display:none">The file was not found or a timeout occurred. Please check your network connection and try again.</p>
+    </div>
+
+    <script>
+      const nv=document.getElementById("nv")//自然通風乾湿計用湿度表
+      const ap=document.getElementById("ap")//通風乾湿計用湿度表
+      const nvf=document.getElementById("nvFrame")
+      const apf=document.getElementById("apFrame")
+      const _offline=document.getElementById("offline")
+      const _loading=document.getElementById("loading")
+      const prm=new URLSearchParams(location.search)
+      let viewer;
+      let timeoutId=null
+
+      function load_(url,elm){
+        elm.src=url
+      }
+      function changeHash(id,val=""){
+        if(id===1){//通風乾湿計用湿度表
+          if(apf.src){
+            apf.contentWindow.location.hash=val
+          }else{
+            timeoutId=setTimeout(()=>{
+              document.body.style.cursor="default"
+              nv.style.cursor="default"
+              ap.style.cursor="default"
+              nv.disabled=false
+              ap.disabled=false
+              apf.src="about:blank"
+              apf.style.display="none"
+              _offline.style.display="block"
+            })
+            apf.src="./humidityTable/aspirated.html"+val
+          }
+        }else{//自然通風乾湿計用湿度表
+          if(nvf.src){
+            nvf.contentWindow.location.hash=val
+          }else{
+            timeoutId=setTimeout(()=>{
+              document.body.style.cursor="default"
+              nv.style.cursor="default"
+              ap.style.cursor="default"
+              nv.disabled=false
+              ap.disabled=false
+              nvf.src="about:blank"
+              nvf.style.display="none"
+              _offline.style.display="block"
+            })
+            nvf.src="./humidityTable/naturalVentilation.html"+val
+          }
+        }
+        _loading.style.display="none"
+      }
+      function _changeiframe(id){
+        if (id===1){
+          changeHash(id)
+          nvf.style.display="none"
+          apf.style.display="block"
+          nv.classList.remove("active")
+          ap.classList.add("active")
+        }else{
+          changeHash(id)
+          apf.style.display="none"
+          nvf.style.display="block"
+          ap.classList.remove("active")
+          nv.classList.add("active")
+        }
+        viewer=id
+      }
+      nv.addEventListener("click",()=>{
+        document.body.style.cursor="wait"
+        nv.style.cursor="wait"
+        ap.style.cursor="wait"
+        nv.disabled=true
+        ap.disabled=true
+        _changeiframe(0)
+      })
+      ap.addEventListener("click",()=>{
+        document.body.style.cursor="wait"
+        nv.style.cursor="wait"
+        ap.style.cursor="wait"
+        nv.disabled=true
+        ap.disabled=true
+        _changeiframe(1)
+      })
+      nvf.addEventListener("load",(){
+        clearTimeout(timeoutId)
+        document.body.style.cursor="default"
+        nv.style.cursor="default"
+        ap.style.cursor="default"
+        nv.disabled=true
+        ap.disabled=false
+      })
+      apf.addEventListener("load",(){
+        clearTimeout(timeoutId)
+        document.body.style.cursor="default"
+        nv.style.cursor="default"
+        ap.style.cursor="default"
+        nv.disabled=false
+        ap.disabled=true
+      })
+      window.addEventListener("hashchange",()=>{
+        changeHash(viewer,location.hash)
+      })
+      function userOnclick(){
+        const mode=prm.get("mode").toLowerCase()
+        if (mode=="1"||mode=="aspirated"||mode=="aspirate"||mode=="asp"){
+          ap.click()
+        }else{
+          nv.click()
+        }
+      }
+      userOnclick()
+    </script>
+  </body>
+</html>
