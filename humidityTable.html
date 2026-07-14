@@ -173,6 +173,7 @@
         ap.style.cursor="default"
         nv.disabled=true
         ap.disabled=false
+        changeHash(0,location.hash)
       })
       apf.addEventListener("load",()=>{
         clearTimeout(timeoutId)
@@ -181,6 +182,7 @@
         ap.style.cursor="default"
         nv.disabled=false
         ap.disabled=true
+        changeHash(1,location.hash)
       })
       window.addEventListener("hashchange",()=>{
         changeHash(viewer,location.hash)
