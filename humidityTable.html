@@ -34,11 +34,12 @@
         cursor:pointer;
         transition:background-color:0.5s,transform:0.1s;
       }
-      .slcbtn:disabled{
+      .slcbtn:disabled:hover{
         cursor:not-allowed;
       }
-      .slcbtn:hover{
+      .slcbtn:not(:disabled):hover{
         background-color:#999;
+        cursor:pointer;
       }
       .slcbtn.active{
         background-color:#77edac;
