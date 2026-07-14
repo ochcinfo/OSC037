@@ -116,7 +116,6 @@
       const prm=new URLSearchParams(location.search)
       let viewer;
       let timeoutId=null
-      let disabled={nv:false,ap:false}
 
       function load_(url,elm){
         elm.src=url
@@ -130,8 +129,6 @@
             ap.style.cursor="default"
             nv.ariaDisabled=false
             ap.ariaDisabled=true
-            disabled.nv=false
-            disabled.ap=true
           }else{
             timeoutId=setTimeout(()=>{
               document.body.style.cursor="default"
@@ -139,8 +136,6 @@
               ap.style.cursor="default"
               nv.ariaDisabled=false
               ap.ariaDisabled=false
-              disabled.nv=false
-              disabled.ap=false
               apf.src="about:blank"
               apf.style.display="none"
               _offline.style.display="block"
@@ -155,8 +150,6 @@
             ap.style.cursor="default"    
             nv.ariaDisabled=true
             ap.ariaDisabled=false
-            disabled.nv=true
-            disabled.ap=true
           }else{
             timeoutId=setTimeout(()=>{
               document.body.style.cursor="default"
@@ -164,8 +157,6 @@
               ap.style.cursor="default"
               nv.ariaDisabled=false
               ap.ariaDisabled=false
-              disabled.nv=false
-              disabled.ap=false
               nvf.src="about:blank"
               nvf.style.display="none"
               _offline.style.display="block"
@@ -201,14 +192,12 @@
           },1000)
           return
         }
-        if (disabled.nv){return}
+        if (nv.ariaDisabled){return}
         document.body.style.cursor="wait"
         nv.style.cursor="wait"
         ap.style.cursor="wait"
         nv.ariaDisabled=true
         ap.ariaDisabled=true
-        disabled.nv=true
-        disabled.ap=true
         _changeiframe(0)
       })
       ap.addEventListener("click",()=>{
@@ -218,14 +207,12 @@
             ap.classList.remove("shake")
           },1000)
         }
-        if (disabled.ap){return}
+        if (ap.ariaDisabled){return}
         document.body.style.cursor="wait"
         nv.style.cursor="wait"
         ap.style.cursor="wait"
         nv.ariaDisabled=true
         ap.ariaDisabled=true
-        disabled.nv=true
-        disabled.ap=true
         _changeiframe(1)
       })
       nvf.addEventListener("load",()=>{
@@ -235,8 +222,6 @@
         ap.style.cursor="default"
         nv.ariaDisabled=true
         ap.ariaDisabled=false
-        disabled.nv=true
-        disabled.ap=false
         changeHash(0,location.hash)
       })
       apf.addEventListener("load",()=>{
@@ -246,8 +231,6 @@
         ap.style.cursor="default"
         nv.ariaDisabled=false
         ap.ariaDisabled=true
-        disabled.nv=false
-        disabled.ap=true
         changeHash(1,location.hash)
       })
       window.addEventListener("hashchange",()=>{
