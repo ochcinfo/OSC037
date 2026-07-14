@@ -194,7 +194,6 @@
         viewer=id
       }
       nv.addEventListener("click",()=>{
-        if (disabled.nv){return}
         if (nv.classList.contains("active")){
           nv.classList.add("shake")
           setTimeout(()=>{
@@ -202,6 +201,7 @@
           },1000)
           return
         }
+        if (disabled.nv){return}
         document.body.style.cursor="wait"
         nv.style.cursor="wait"
         ap.style.cursor="wait"
@@ -212,13 +212,13 @@
         _changeiframe(0)
       })
       ap.addEventListener("click",()=>{
-        if (disabled.ap){return}
         if (ap.classList.contains("active")){
           ap.classList.add("shake")
           setTimeout(()=>{
             ap.classList.remove("shake")
           },1000)
         }
+        if (disabled.ap){return}
         document.body.style.cursor="wait"
         nv.style.cursor="wait"
         ap.style.cursor="wait"
