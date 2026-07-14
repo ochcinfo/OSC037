@@ -58,10 +58,10 @@
         border-radius:4px;
         transition:background-color 0.4s,transform 0.2s;
       }
-      .slcbtn:disabled:hover{
+      .slcbtn[aria-disabled="true"]hover{
         cursor:not-allowed !important;
       }
-      .slcbtn:not(:disabled):hover{
+      .slcbtn:not([aria-disabled="true"]):hover{
         background-color:#999;
         cursor:pointer !important;
       }
@@ -76,7 +76,7 @@
         color:#12343e;
         box-shadow:inset 0 4px 8px rgba(0,0,0,0.3)
       }
-      .slcbtn:not(:disabled):active{
+      .slcbtn:not([aria-disabled="true"]):active{
         transform:scale(0.96)
       }
       #iframeViewer{
@@ -127,16 +127,18 @@
             apf.contentWindow.location.hash=val
             document.body.style.cursor="default"
             nv.style.cursor="default"
-            ap.style.cursor="default"/*
-            nv.disabled=false
-            ap.disabled=true*/
+            ap.style.cursor="default"
+            nv.ariaDisabled=false
+            ap.ariaDisabled=true
+            disabled.nv=false
+            disabled.ap=true
           }else{
             timeoutId=setTimeout(()=>{
               document.body.style.cursor="default"
               nv.style.cursor="default"
-              ap.style.cursor="default"/*
-              nv.disabled=false
-              ap.disabled=false*/
+              ap.style.cursor="default"
+              nv.ariaDisabled=false
+              ap.ariaDisabled=false
               disabled.nv=false
               disabled.ap=false
               apf.src="about:blank"
@@ -150,18 +152,18 @@
             nvf.contentWindow.location.hash=val
             document.body.style.cursor="default"
             nv.style.cursor="default"
-            ap.style.cursor="default"/*    
-            nv.disabled=true
-            ap.disabled=false*/
+            ap.style.cursor="default"    
+            nv.ariaDisabled=true
+            ap.ariaDisabled=false
             disabled.nv=true
             disabled.ap=true
           }else{
             timeoutId=setTimeout(()=>{
               document.body.style.cursor="default"
               nv.style.cursor="default"
-              ap.style.cursor="default"/*
-              nv.disabled=false
-              ap.disabled=false*/
+              ap.style.cursor="default"
+              nv.ariaDisabled=false
+              ap.ariaDisabled=false
               disabled.nv=false
               disabled.ap=false
               nvf.src="about:blank"
@@ -202,9 +204,9 @@
         }
         document.body.style.cursor="wait"
         nv.style.cursor="wait"
-        ap.style.cursor="wait"/*
-        nv.disabled=true
-        ap.disabled=true*/
+        ap.style.cursor="wait"
+        nv.ariaDisabled=true
+        ap.ariaDisabled=true
         disabled.nv=true
         disabled.ap=true
         _changeiframe(0)
@@ -219,9 +221,9 @@
         }
         document.body.style.cursor="wait"
         nv.style.cursor="wait"
-        ap.style.cursor="wait"/*
-        nv.disabled=true
-        ap.disabled=true*/
+        ap.style.cursor="wait"
+        nv.ariaDisabled=true
+        ap.ariaDisabled=true
         disabled.nv=true
         disabled.ap=true
         _changeiframe(1)
@@ -230,9 +232,9 @@
         clearTimeout(timeoutId)
         document.body.style.cursor="default"
         nv.style.cursor="default"
-        ap.style.cursor="default"/*
-        nv.disabled=true
-        ap.disabled=false*/
+        ap.style.cursor="default"
+        nv.ariaDisabled=true
+        ap.ariaDisabled=false
         disabled.nv=true
         disabled.ap=false
         changeHash(0,location.hash)
@@ -241,9 +243,9 @@
         clearTimeout(timeoutId)
         document.body.style.cursor="default"
         nv.style.cursor="default"
-        ap.style.cursor="default"/*
-        nv.disabled=false
-        ap.disabled=true*/
+        ap.style.cursor="default"
+        nv.ariaDisabled=false
+        ap.ariaDisabled=true
         disabled.nv=false
         disabled.ap=true
         changeHash(1,location.hash)
