@@ -141,12 +141,14 @@
           apf.style.display="block"
           nv.classList.remove("active")
           ap.classList.add("active")
+          changeHash(id,location.hash)
         }else{
           changeHash(id)
           apf.style.display="none"
           nvf.style.display="block"
           ap.classList.remove("active")
           nv.classList.add("active")
+          changeHash(id,location.hash)
         }
         viewer=id
       }
