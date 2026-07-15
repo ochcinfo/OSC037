@@ -56,9 +56,9 @@
       <summary><span class="table_contents">目次</span></summary>
       <div>
         <ul>
-          <li><a href="javascript:movepage('#_about_osc',{'element':'details'})">About - Online Science Contest</a></li>
-          <li><a href="javascript:movepage('#_about_osc037',{'element':'details'})">About - OSC037</a></li>
-          <li><a href="javascript:movepage('#_tools',{'element':'details'})">ツール / Tools</a></li>
+          <li><a href="javascript:movepage('#_about_osc',{'element':'details','urlhash':'#c:contents'})">About - Online Science Contest</a></li>
+          <li><a href="javascript:movepage('#_about_osc037',{'element':'details','urlhash':'#c:thiscontest'})">About - OSC037</a></li>
+          <li><a href="javascript:movepage('#_tools',{'element':'details','urlhash':'#c:tools'})">ツール / Tools</a></li>
         </ul>
       </div>
     </details>
@@ -105,13 +105,16 @@
           behavior:"smooth",
         })
       }
-      function movepage(idx,config={}){
+      function movepage(idx,{element="",urlhash=""}={}){
+        if (!!idx)return;
         const el=document.querySelector(idx)
-        const eltype=config.element??""
-        if (eltype==="details"){
+        if (element==="details"){
           el.open=true
         }
         el_scroll(el)
+        if (urlhash){
+          history.replaceState(null,"",urlhash)
+        }
       }
     </script>
     <script type="module">
@@ -128,6 +131,19 @@
           top: 0,
           behavior: 'smooth'
         })
+      })
+    </script>
+    <script>
+      const ts={
+        "contents":['#_about_osc',{'element':'details'}],
+        "thiscontest":['#_about_osc037',{'element':'details'}],
+        "tools":['#_tools',{'element':'details'}],
+      }
+      window.addEventListener('hashchange',()=>{
+        const h=location.hash
+        if (h.startsWith("#c:")){//Contents Jump
+          
+        }
       })
     </script>
   </body>
