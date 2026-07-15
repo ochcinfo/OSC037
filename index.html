@@ -107,7 +107,7 @@
       }
       function movepage(idx,config={}){
         console.log(idx,config)
-        if (!!idx)return;
+        if (!idx)return;
         const el=document.querySelector(idx)
         const element=config.element??""
         const urlhash=config.urlhash??""
