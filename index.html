@@ -144,12 +144,16 @@
           "tools":['#_tools',{'element':'details'}],
         },
       }
-      window.addEventListener('hashchange',()=>{
+      function hashChangeFunction(){
         const h=location.hash
         if (h.startsWith("#c:")){//Contents Jump
           const _=h.slice(3)
           movepage(...ts.$c[_])
         }
+      }
+      window.addEventListener('hashchange',()=>{
+        hashChangeFunction()
       })
+      hashChangeFunction()
     </script>
   </body>
