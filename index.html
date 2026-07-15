@@ -108,10 +108,10 @@
       function movepage(idx,config={}){
         const el=document.querySelector(idx)
         const eltype=config.element??""
-        el_scroll(el)
         if (eltype==="details"){
           el.open=true
         }
+        el_scroll(el)
       }
     </script>
     <script type="module">
