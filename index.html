@@ -54,7 +54,7 @@
     <span id="home"></span>
     <h1>Online Science Contest 037 (OSC037)</h1>
     <p id="page_jump_url_alert" style="display:none;font-size:1.2rem;color:green">5秒後に&nbsp;<span id="page_jump_url_input"></span>&nbsp;へ移動します...</p>
-    <details open>
+    <details id="_contents" open>
       <summary><span class="table_contents">目次</span></summary>
       <div>
         <ul>
@@ -141,7 +141,8 @@
     <script>
       const ts={
         $c:{
-          "contents":['#_about_osc',{'element':'details'}],
+          "contents":['#_contents',{'element':'details'}],
+          "about":['#_about_osc',{'element':'details'}],
           "thiscontest":['#_about_osc037',{'element':'details'}],
           "tools":['#_tools',{'element':'details'}],
           "top":['home',{}]
