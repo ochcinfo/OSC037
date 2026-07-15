@@ -52,6 +52,7 @@
   </head>
   <body>
     <h1>Online Science Contest 037 (OSC037)</h1>
+    <p id="page_jump_alert" style="display:none;font-size:2rem;">5秒後に&nbsp;<span id="page_jump_url_input"></span>&nbsp;へ移動します...</p>
     <details open>
       <summary><span class="table_contents">目次</span></summary>
       <div>
@@ -143,12 +144,29 @@
           "thiscontest":['#_about_osc037',{'element':'details'}],
           "tools":['#_tools',{'element':'details'}],
         },
+        $l:{
+          "humidity1":"./humidityTable/naturalVentilation.html",
+          "humidity2":"./humidityTable/aspirated.html",
+          "humidity3":"./humidityTable.html",
+        },
       }
       function hashChangeFunction(){
         const h=location.hash
         if (h.startsWith("#c:")){//Contents Jump
           const _=h.slice(3)
           movepage(...ts.$c[_])
+        }
+        if (h.startsWith("#l:")){//Links Jump
+          const _=h.slice(3)
+          const j=ts.$l[_]
+          if (!j)return;
+          const ui=document.getElementById("page_jump_url_input")
+          const ua=document.getElementById("page_jump_url_alert")
+          ui.textContent=j
+          ua.style.display="block"
+          setTimeout(()=>{
+            location.href=j
+          },5000)
         }
       }
       window.addEventListener('hashchange',()=>{
