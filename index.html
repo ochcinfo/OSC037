@@ -3,7 +3,9 @@
   <head>
     <meta charset=utf-8>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Science Contest 037</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="オンラインで月に4回ほど開催されているOnline Science Contestの第37回コンテストホームページです。">
+    <title>Top - Online Science Contest 037</title>
     <style>
       a{
         color:#2196f3;
@@ -14,6 +16,34 @@
       .table_contents{
         font-size:1.5rem;
       }
+      #move_top{
+        position:fixed;
+        bottom:30px;
+        right:30px;
+        width:50px;
+        height:50px;
+        background-color:#333;
+        color:#fff;
+        border:none;
+        border-radius:50%;
+        font-size:24px;
+        cursor:pointer;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        box-shadow:0 4px 6px rgba(0, 0, 0, 0.1);
+        opacity:0;
+        visibility:hidden;
+        transition:opacity 0.3s,visibility 0.3s;
+        z-index:255;
+      }
+      #move_top:hover{
+        background-color:#555;
+      }
+      .showToTopButton{
+        opacity:1;
+        visibility:visible;
+      }
     </style>
   </head>
   <body>
@@ -22,8 +52,8 @@
       <summary><span class="table_contents">目次</span></summary>
       <div>
         <ul>
-          <li><a href="javascript:movepage('#_tools',{'element':'details'})">ツール / Tools</a></li>
           <li><a href="javascript:movepage('#_about_osc',{'element':'details'})">About - Online Science Contest</a></li>
+          <li><a href="javascript:movepage('#_tools',{'element':'details'})">ツール / Tools</a></li>
         </ul>
       </div>
     </details>
@@ -47,6 +77,7 @@
       <p>自然通風/通風同時見湿度表 <a href="humidityTable.html" target="_blank" rel="noopener noreferrer">開く</a></p>
     </details>
 
+    <button id="move_top" aria-label="ページトップへ戻る">↑</button>
 
     <script>
       function el_scroll(element,headerHeight=0){
@@ -65,5 +96,21 @@
           el.open=true
         }
       }
+    </script>
+    <script type="module">
+      const mvel=document.getElementById("move_top")
+      window.addEventListener("scroll",()=>{
+        if (window.scrollY>(window.innerHeight/1.5)){
+          mvel.classList.add("showToTopButton")
+        }else{
+          mvel.classList.remove("showToTopButton")
+        }
+      })
+      mvel.addEventListener("click",()=>{
+         window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        })
+      })
     </script>
   </body>
