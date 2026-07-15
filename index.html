@@ -2,19 +2,68 @@
 <html lang=ja>
   <head>
     <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Science Contest 037</title>
     <style>
       a{
-        color:#2196f3
+        color:#2196f3;
+      }
+      html{
+        scroll-behavior:smooth;
+      }
+      .table_contents{
+        font-size:1.5rem;
       }
     </style>
   </head>
   <body>
     <h1>Online Science Contest 037 (OSC037)</h1>
-    <details>
+    <details open>
+      <summary><span class="table_contents">目次</span></summary>
+      <div>
+        <ul>
+          <li><a href="javascript:movepage('#_tools',{'element':'details'})">ツール / Tools</a></li>
+          <li><a href="javascript:movepage('#_about_osc',{'element':'details'})">About - Online Science Contest</a></li>
+        </ul>
+      </div>
+    </details>
+    <details id="_about_osc">
+      <summary>Online Science Contestについて</summary>
+      <p>通称OSC,お寿司は、オンラインで月に4回ほど開催されている競技科学のコンテスト。</p>
+      <p>年齢や性別などを問わず、誰でも参加することが出来る。</p>
+      <p>これは、Online Science Contest 037 (地学杯) のページです。</p>
+      <p>詳しくはこちら↓↓↓</p>
+      <div>
+        <ul>
+          <li><a href="https://ja.wikipedia.org/wiki/Online_Science_Contest">Online Science Contest - Wikipedia</a></li>
+          <li><a href="https://x.com/NeoInstagramer">OSC代表NeoInstagramer</a></li>
+        </ul>
+      </div>
+    </details>
+    <details id="_tools">
       <summary>ツール / Tools</summary>
       <p>自然通風乾湿計用湿度表 <a href="./humidityTable/naturalVentilation.html" target="_blank" rel="noopener noreferrer">開く</a></p>
       <p>通風乾湿計用湿度表 <a href="./humidityTable/aspirated.html" target="_blank" rel="noopener noreferrer">開く</a></p>
       <p>自然通風/通風同時見湿度表 <a href="humidityTable.html" target="_blank" rel="noopener noreferrer">開く</a></p>
     </details>
+
+
+    <script>
+      function el_scroll(element,headerHeight=0){
+        const elTop=element.getBoundingClientRect().top+window.scrollY
+        const mvPoint=elTop-(window.innerHeight/4)-headerHeight
+        window.scrollTo({
+          top:mvPoint,
+          behavior:"smooth",
+        })
+      }
+      function movepage(idx,config={}){
+        const el=document.querySelector(idx)
+        const eltype=config.element??""
+        el_scroll(el)
+        if (eltype==="details"){
+          el.open=true
+        }
+      }
+    </script>
   </body>
