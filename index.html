@@ -162,7 +162,7 @@
           if (!j)return;
           const ui=document.getElementById("page_jump_url_input")
           const ua=document.getElementById("page_jump_url_alert")
-          ui.textContent=j
+          ui.textContent=new URL(j,document.baseURI).href
           ua.style.display="block"
           setTimeout(()=>{
             location.href=j
