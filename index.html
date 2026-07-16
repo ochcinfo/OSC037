@@ -58,7 +58,7 @@
       <summary><span class="table_contents">目次</span></summary>
       <div>
         <ul>
-          <li><a href="javascript:movepage('#_about_osc',{'element':'details','urlhash':'#c:contents'})">About - Online Science Contest</a></li>
+          <li><a href="javascript:movepage('#_about_osc',{'element':'details','urlhash':'#c:about'})">About - Online Science Contest</a></li>
           <li><a href="javascript:movepage('#_about_osc037',{'element':'details','urlhash':'#c:thiscontest'})">About - OSC037</a></li>
           <li><a href="javascript:movepage('#_tools',{'element':'details','urlhash':'#c:tools'})">ツール / Tools</a></li>
         </ul>
@@ -119,6 +119,7 @@
         if (urlhash){
           history.replaceState(null,"",urlhash)
         }
+        console.log(location.hash)
       }
     </script>
     <script type="module">
@@ -145,7 +146,7 @@
           "about":['#_about_osc',{'element':'details'}],
           "thiscontest":['#_about_osc037',{'element':'details'}],
           "tools":['#_tools',{'element':'details'}],
-          "top":['home',{}]
+          "top":['#home',{}]
         },
         $l:{
           "humidity1":"./humidityTable/naturalVentilation.html",
