@@ -4,7 +4,7 @@ class HTMLBlankOpenAnchorElement extends HTMLAnchorElement{
   }
   connectedCallback(){
     this.target="_blank"
-    this.rel="noopener noreferrer"
+    this.rel+=" noopener noreferrer"
   }
 }
 customElements.define('blank-a',HTMLBlankOpenAnchorElement,{extends:'a'})
