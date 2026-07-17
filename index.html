@@ -58,10 +58,10 @@
       <summary><span class="table_contents">目次</span></summary>
       <div>
         <ul>
-          <li><a href="javascript:movepage('#_about_osc',{'element':'details','urlhash':'#c:about'})">About - Online Science Contest</a></li>
-          <li><a href="javascript:movepage('#_about_osc037',{'element':'details','urlhash':'#c:thiscontest'})">About - OSC037</a></li>
-          <li><a href="javascript:movepage('#_tools',{'element':'details','urlhash':'#c:tools'})">ツール / Tools</a></li>
-          <li><a href="javascript:movepage('#_links',{'element':'details','urlhash':'#c:links'})">関連リンク / Links</a></li>
+          <li><a href="javascript:movepage(...ts.$c.about)">About - Online Science Contest</a></li>
+          <li><a href="javascript:movepage(...ts.$c.thiscontest)">About - OSC037</a></li>
+          <li><a href="javascript:movepage(...ts.$c.tools)">ツール / Tools</a></li>
+          <li><a href="javascript:movepage(...ts.$c.links)">関連リンク / Links</a></li>
         </ul>
       </div>
     </details>
@@ -92,16 +92,16 @@
     </details>
     <details id="_tools">
       <summary>ツール / Tools</summary>
-      <p>自然通風乾湿計用湿度表 <a href="./humidityTable/naturalVentilation.html" is="blank">開く↗</a></p>
-      <p>通風乾湿計用湿度表 <a href="./humidityTable/aspirated.html" is="blank">開く↗</a></p>
-      <p>自然通風/通風同時見湿度表 <a href="humidityTable.html" is="blank">開く↗</a></p>
+      <p>自然通風乾湿計用湿度表 <a href="./humidityTable/naturalVentilation.html" is="blank-a">開く↗</a></p>
+      <p>通風乾湿計用湿度表 <a href="./humidityTable/aspirated.html" is="blank-a">開く↗</a></p>
+      <p>自然通風/通風同時見湿度表 <a href="humidityTable.html" is="blank-a">開く↗</a></p>
     </details>
     <details id="_links">
       <summary>関連リンク / Links</summary>
-      <p>Online X Contest <a href="https://iswao-onlinexcontest.com" is="blank">開く↗</a></p>
-      <p>OSC代表NeoInstagramer <a href="https://x.com/NeoInstagramer" is="blank">開く↗</a></p>
-      <p>Online Science Contest - Wikipedia日本語版 <a href="https://ja.wikipedia.org/wiki/Online_Science_Contest">開く↗</a></p>
-      <p>NeoInstagramer - note <a href="https://note.com/neo_instagramer">開く↗</a></p>
+      <p>Online X Contest <a href="https://iswao-onlinexcontest.com" is="blank-a">開く↗</a></p>
+      <p>OSC代表NeoInstagramer <a href="https://x.com/NeoInstagramer" is="blank-a">開く↗</a></p>
+      <p>Online Science Contest - Wikipedia日本語版 <a href="https://ja.wikipedia.org/wiki/Online_Science_Contest" is="blank-a">開く↗</a></p>
+      <p>NeoInstagramer - note <a href="https://note.com/neo_instagramer" is="blank-a">開く↗</a></p>
     </details>
 
     <button id="move_top" aria-label="ページトップへ戻る">↑</button>
@@ -116,7 +116,7 @@
           this.rel="noopener noreferrer"
         }
       }
-      customElements.define('blank',HTMLBlankOpenAnchorElement,{extends:'a'})
+      customElements.define('blank-a',HTMLBlankOpenAnchorElement,{extends:'a'})
     </script>
     <script>
       function el_scroll(element,headerHeight=0){
