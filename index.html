@@ -73,8 +73,8 @@
       <p>詳しくはこちら↓↓↓</p>
       <div>
         <ul>
-          <li><a href="https://ja.wikipedia.org/wiki/Online_Science_Contest">Online Science Contest - Wikipedia</a></li>
-          <li><a href="https://x.com/NeoInstagramer">OSC代表NeoInstagramer</a></li>
+          <li><a href="https://ja.wikipedia.org/wiki/Online_Science_Contest" is="blank-a">Online Science Contest - Wikipedia</a></li>
+          <li><a href="https://x.com/NeoInstagramer" is="blank-a">OSC代表NeoInstagramer</a></li>
         </ul>
       </div>
     </details>
@@ -87,7 +87,7 @@
       <p>例えば、気象の知識があれば、天候などを予測できる。</p>
       <p>身近なこともあるし、宇宙という果てしないものもある。</p>
       <p>あなたの地学の知識を試してみませんか?</p>
-      <p>11/10頃、<a href="https://iswao-onlinexcontest.com">Online X Contest</a>で開催。</p>
+      <p>11/10頃、<a href="https://iswao-onlinexcontest.com" is="blank-a">Online X Contest</a>で開催。</p>
       <p>皆さんのご参加をお待ちしております。</p>
     </details>
     <details id="_tools">
@@ -106,18 +106,7 @@
 
     <button id="move_top" aria-label="ページトップへ戻る">↑</button>
 
-    <script>
-      class HTMLBlankOpenAnchorElement extends HTMLAnchorElement{
-        constructor(){
-          super()
-        }
-        connectedCallback(){
-          this.target="_blank"
-          this.rel="noopener noreferrer"
-        }
-      }
-      customElements.define('blank-a',HTMLBlankOpenAnchorElement,{extends:'a'})
-    </script>
+    <script src="./common/htmlElement1.common.js"></script>
     <script>
       function el_scroll(element,headerHeight=0){
         const elTop=element.getBoundingClientRect().top+window.scrollY
