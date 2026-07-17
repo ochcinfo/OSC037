@@ -168,7 +168,7 @@
         const h=location.hash
         if (h.startsWith("#c:")){//Contents Jump
           const _=h.slice(3)
-          movepage(...ts.$c[_])
+          movepage(...(ts.$c[_]??[]))
         }
         if (h.startsWith("#l:")){//Links Jump
           const _=h.slice(3)
