@@ -92,16 +92,32 @@
     </details>
     <details id="_tools">
       <summary>ツール / Tools</summary>
-      <p>自然通風乾湿計用湿度表 <a href="./humidityTable/naturalVentilation.html" target="_blank" rel="noopener noreferrer">開く</a></p>
-      <p>通風乾湿計用湿度表 <a href="./humidityTable/aspirated.html" target="_blank" rel="noopener noreferrer">開く</a></p>
-      <p>自然通風/通風同時見湿度表 <a href="humidityTable.html" target="_blank" rel="noopener noreferrer">開く</a></p>
+      <p>自然通風乾湿計用湿度表 <a href="./humidityTable/naturalVentilation.html" is="blank">開く↗</a></p>
+      <p>通風乾湿計用湿度表 <a href="./humidityTable/aspirated.html" is="blank">開く↗</a></p>
+      <p>自然通風/通風同時見湿度表 <a href="humidityTable.html" is="blank">開く↗</a></p>
     </details>
     <details id="_links">
       <summary>関連リンク / Links</summary>
+      <p>Online X Contest <a href="https://iswao-onlinexcontest.com" is="blank">開く↗</a></p>
+      <p>OSC代表NeoInstagramer <a href="https://x.com/NeoInstagramer" is="blank">開く↗</a></p>
+      <p>Online Science Contest - Wikipedia日本語版 <a href="https://ja.wikipedia.org/wiki/Online_Science_Contest">開く↗</a></p>
+      <p>NeoInstagramer - note <a href="https://note.com/neo_instagramer">開く↗</a></p>
     </details>
 
     <button id="move_top" aria-label="ページトップへ戻る">↑</button>
 
+    <script>
+      class HTMLBlankOpenAnchorElement extends HTMLAnchorElement{
+        constructor(){
+          super()
+        }
+        connectedCallback(){
+          this.target="_blank"
+          this.rel="noopener noreferrer"
+        }
+      }
+      customElements.define('blank',HTMLBlankOpenAnchorElement,{extends:'a'})
+    </script>
     <script>
       function el_scroll(element,headerHeight=0){
         const elTop=element.getBoundingClientRect().top+window.scrollY
