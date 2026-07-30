@@ -59,10 +59,10 @@
       <summary><span class="table_contents">目次</span></summary>
       <div>
         <ul>
-          <li><a href="javascript:movepage(...ts.$c.about)">About - Online Science Contest</a></li>
-          <li><a href="javascript:movepage(...ts.$c.thiscontest)">About - OSC037</a></li>
-          <li><a href="javascript:movepage(...ts.$c.tools)">ツール / Tools</a></li>
-          <li><a href="javascript:movepage(...ts.$c.links)">関連リンク / Links</a></li>
+          <li><a href="javascript:movepage(...ts.$c$.about)">About - Online Science Contest</a></li>
+          <li><a href="javascript:movepage(...ts.$c$.thiscontest)">About - OSC037</a></li>
+          <li><a href="javascript:movepage(...ts.$c$.tools)">ツール / Tools</a></li>
+          <li><a href="javascript:movepage(...ts.$c$.links)">関連リンク / Links</a></li>
         </ul>
       </div>
     </details>
@@ -70,7 +70,7 @@
       <summary>Online Science Contestについて</summary>
       <p>通称OSC,お寿司は、オンラインで月に4回ほど開催されている競技科学のコンテスト。</p>
       <p>年齢や性別などを問わず、誰でも参加することが出来る。</p>
-      <p>これは、Online Science Contest 037 (地学杯) のページです。</p>
+      <p>当サイトは、Online Science Contest 037 (地学杯) のトップページです。</p>
       <p>詳しくはこちら↓↓↓</p>
       <div>
         <ul>
@@ -152,13 +152,21 @@
     <script>
       const ts={
         $c:{
-          "contents":['#_contents',{'element':'details'}],
-          "about":['#_about_osc',{'element':'details'}],
+          "contents":['#_contents',{'element':'details'],
+          "about":['#_about_osc',{'element':'details'],
           "thiscontest":['#_about_osc037',{'element':'details'}],
           "tools":['#_tools',{'element':'details'}],
           "top":['#home',{}],
           "links":['#_links',{'element':'details'}],
         },
+        $c$:{
+          "contents":['#_contents',{'element':'details','urlhash':'#c:contents'}}],
+          "about":['#_about_osc',{'element':'details','urlhash':'#c:about'}}],
+          "thiscontest":['#_about_osc037',{'element':'details','urlhash':'#c:thiscontest'}}],
+          "tools":['#_tools',{'element':'details','urlhash':'#c:tools'}}],
+          "top":['#home',{'urlhash':'#c:top'}}],
+          "links":['#_links',{'element':'details','urlhash':'#c:links'}}],
+        },//$マークが最後についているものは、$マークが付いていないものに強制ハッシュ変更を入れたもの
         $l:{
           "humidity1":"./humidityTable/naturalVentilation.html",
           "humidity2":"./humidityTable/aspirated.html",
